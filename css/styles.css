@@ -84,13 +84,13 @@ header {
 }
 
 .nav-menu-item {
+  position: relative;
   display: flex;
 }
 
 .nav-menu-item:not(:last-child) {
   margin-right: 50px;
 }
-
 .nav-menu-link {
   font-family: var(--main-font);
   font-weight: 500;
@@ -102,6 +102,18 @@ header {
   padding-bottom: 32px;
   display: block;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-menu-link.current::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  content: '';
+  height: 4px;
+  border-radius: 2px;
+  width: 100%;
+  background-color: var(--main-color);
 }
 
 .current,
@@ -425,6 +437,30 @@ address {
 .about-us-item:not(:last-child) {
   margin-right: 30px;
 }
+.about-us-item {
+  position: relative;
+}
+
+.about-us-item-outline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: var(--main-font);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: rgba(47, 48, 58, 0.8);
+}
 
 /* OUR TEAM   */
 
@@ -644,4 +680,36 @@ address {
   line-height: 1.9;
   letter-spacing: 0.03em;
   color: var(--third-color);
+}
+
+.overlay-box {
+  position: relative;
+  overflow: hidden;
+}
+.overlay {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 294px;
+  padding: 63px 24px;
+  background-color: rgba(33, 150, 243, 0.9);
+
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-case-list-link:hover .overlay,
+.portfolio-case-list-link:focus .overlay {
+  opacity: 1;
+  transform: translateY(0);
 }
